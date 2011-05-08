@@ -32,6 +32,6 @@ Follow these steps to get up and running:
 
 # Screenshot
 
-![screenshot!](https://github.com/zaffra/TweetRelevance/raw/master/screenshot.png)
+![screenshot!](https://github.com/ptwobrussell/Tweet-Relevance/raw/master/screenshot.png)
 
 Provided by: Zaffra, LLC - http://zaffra.com
