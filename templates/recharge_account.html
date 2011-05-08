@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <p>You are out of login requests for this application. You may purchase some more using PayPal!</p>
+        <form action='/set_ec' METHOD='POST'>
+        <input type='image' name='submit' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif' border='0' align='top' alt='Check out with PayPal'/>
+        <input type='hidden' name='sid' value='{{ sid }}'/>
+        </form>
+    </body>
+</html>

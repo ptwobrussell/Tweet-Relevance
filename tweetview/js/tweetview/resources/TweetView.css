@@ -1,0 +1,115 @@
+/* iOS styles */
+
+/* vertically center the image */
+.tweetviewRefresh {
+	float:right;
+}
+.tweetviewRefresh img	{
+	margin-top:6px;
+}
+
+/* tweetview pane */
+.mblScrollableViewContainer {
+	padding-bottom:40px !important;
+}
+
+.tweetviewList {
+	
+}
+.tweetviewHidden {
+	display:none;
+}
+
+.tweetviewList li {
+	min-height:55px;
+	padding-top:8px;
+}
+
+.tweetviewListItem { /* special formatting to allow 2 lines of content */
+	line-height:18px;
+	height:auto;
+}
+
+/* user's avatar */
+.tweetviewAvatar {
+	float:left;
+}
+/* content wrapper for tweets */
+.tweetviewContent {
+	padding-left:60px;
+}
+
+/* username formatting */
+.tweetviewUser {
+	font-size:80%;
+}
+
+/* actual tweet text formatting */
+.tweetviewText {
+	font-size:70%;
+	font-weight:normal;
+	padding-right:50px;
+	padding-bottom:10px;
+}
+
+.android .tweetviewText {
+	font-size:50%;
+}
+
+
+/* tweet time */
+.tweetviewTime {
+	float:right;
+	color:#777;
+	font-size:65%;
+	font-weight:normal;
+	padding-right:10px;
+}
+
+/* clears floats at the end of the list item */
+.tweetviewClear {
+	clear:both;
+}
+
+.tweetviewSwitch {
+	right:10px;
+	top:10px;
+	float:right;
+}
+
+.tweetviewHidden {
+	display:none;
+}
+
+.tweetviewTabBar {
+	margin-top:-49px;
+}
+
+
+/* Android styles */
+
+.android .tweetviewRefresh img {
+    margin-top: 3px;
+}
+
+.android .mblRoundRectList {
+    background-color: #000;
+    border: none;
+}
+
+.android .tweetviewTime {
+    color: #FFF;
+}
+
+.android .mblTabBarButtonTextBox {
+    color: #FFF;
+}
+
+.android .mblTabBar .mblTabButtonSelected {
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.android .mblColorDefaultSet {
+    background: #FFC700;
+} 

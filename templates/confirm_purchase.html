@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <h1>Confirm Purchase</h1>
+        <p>You are purchasing {{ quantity}} {{ units }} for this application with your PayPal account.</p>
+        <p>Email: {{ email }}</p>
+        <p>Amount: ${{ amount }}</p>
+        <p><a href="/do_ec_payment?{{ query_string_params }}">Complete Purchase</a></p>
+    </body>
+</html>

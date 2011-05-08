@@ -1,0 +1,11 @@
+application: tweet-relevance
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /tweetview
+  static_dir: tweetview
+
+- url: .*
+  script: main.py

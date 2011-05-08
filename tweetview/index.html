@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+        <!-- prevent cache during development - remove these for production usage! -->
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="pragma" content="no-cache">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
+		
+		<title>TweetView</title>
+		<link href="js/tweetview/resources/TweetView.css" rel="stylesheet" />
+		<script type="text/javascript">
+			djConfig = {
+				isDebug: true,
+				baseUrl: './',
+				modulePaths: {
+					tweetview: 'js/tweetview'
+				},
+				parseOnLoad: false
+			};
+		</script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js.uncompressed.js"></script>
+		<script>
+		(function(){
+			// Create a new LINK element, get reference to the HEAD tag which we'll inject it into
+			var l = document.createElement("link"), h = document.getElementsByTagName("head")[0];
+			// Is this Android?
+			var isAndroid = navigator.userAgent.indexOf("Android") > -1;
+			// Add the appropriate stylesheet designations
+			l.setAttribute("rel", "stylesheet");
+			l.setAttribute("href", "http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/mobile/themes/" + (isAndroid ? "android/android.css" : "iphone/iphone.css"));
+			// Inject into header
+			h.insertBefore(l, h.firstChild);
+			
+			// Use the lightweight parser
+			dojo.require("dojox.mobile.parser");
+			// Require Dojo mobile
+			dojo.require("dojox.mobile");
+			// Get additional, non-standard dojox.mobile widgets
+			dojo.require("dojox.mobile.TabBar");
+			// Require the compat if the client isn't Webkit-based
+			dojo.requireIf(!dojo.isWebKit, "dojox.mobile.compat");
+			// Require TweetViewUI
+			dojo.require("tweetview.TweetView"); 
+			dojo.require("tweetview.SettingsView"); 
+
+			// Set accounts for tweetview directly on the namespace
+			tweetview.ACCOUNTS = {
+				dojo: { enabled: true },
+				sitepen: { enabled: true }
+			};
+			
+			// Use iOS images by default
+			// Fix my image paths for android
+			dojo.ready(function() {
+
+				// If Android....
+				if(isAndroid) {
+					var imagePath = "js/tweetview/resources/images/";
+					// Update image path on bottom tabbar
+					dojo.forEach(document.getElementsByClassName("tweetviewRefresh"), function(btn) {
+						dojo.attr(btn, "iconLoading", imagePath + "androidLoading.gif");
+					});
+					// Add a new "iconLoading" attribute to the TweetView instances
+					dojo.attr(dojo.byId("tabBar"), "iconBase", imagePath + "iconStripAndroid.png");
+				}
+
+                var uri = document.location.href;
+                var query = uri.substring(uri.indexOf("?") + 1, uri.length);
+                var queryObject = dojo.queryToObject(query);
+                var dataUrl = "http://localhost:8082/data?sid=" + queryObject.sid;
+
+                // Set this parameter on the dijit before parsing the page
+                dojo.attr("tweets", "serviceUrl", dataUrl);
+
+				// Parse the page!
+				dojox.mobile.parser.parse();
+			});
+			
+		})();
+		</script>
+	</head>
+	<body>
+		
+		<!-- tweets view -->
+        <div id="tweets" dojoType="tweetview.TweetView" selected="true">
+			<h1 dojoType="dojox.mobile.Heading" fixed="top">
+				<!-- the refresh button -->
+				<div dojoType="dojox.mobile.ToolBarButton" class="mblDomButton tweetviewRefresh" icon="js/tweetview/resources/images/refresh.png"></div>
+				Tweets
+			</h1>
+			<ul dojoType="dojox.mobile.RoundRectList" class="tweetviewList"></ul>
+		</div>
+		
+	</body>
+</html>
