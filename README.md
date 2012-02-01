@@ -1,3 +1,7 @@
+# THIS PROJECT IS NOW DEPRECATED
+
+This project is deprecated and will be removed in the near future. Delete your fork of this project and watch/fork [PayPal APIs Up and Running](https://github.com/ptwobrussell/PayPal-APIs-Up-and-Running) instead. [Appendix A](https://github.com/ptwobrussell/PayPal-APIs-Up-and-Running/tree/master/appa) provides a cleaner baseline Tweet Relevance project and each chapter integrates a different PayPal product with it.
+
 # Overview
 
 This GAE project provides sample code that demonstrates how to create a minimal web app
